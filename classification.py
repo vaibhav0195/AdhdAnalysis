@@ -20,10 +20,14 @@ Calculated and displays an ROC curve for the given model. This is done by gettin
 
 Predict_proba returns a 2D array, so we need to select only the values relevent to us (th y scores). Otherwise, we can just use the output directly as the y_score array.
 '''
-def visualize_roc_curve(X, y, model, title, fname):
-    y_score = model.predict_proba(X)
-    y_score = y_score[:, -1]
-    fpr, tpr, _ = roc_curve(y, y_score)
+def visualize_roc_curve(X, y, model, title, fname, for_SVC=False):
+    if for_SVC:
+        y_score = model.decision_function(X)
+        fpr, tpr, _ = roc_curve(y, y_score)
+    else:
+        y_score = model.predict_proba(X)
+        y_score = y_score[:, -1]
+        fpr, tpr, _ = roc_curve(y, y_score)
 
     plt.cla()
     plt.plot(fpr, tpr)
@@ -56,6 +60,17 @@ def adhd_analysis(data):
     #Create baselines
     random_baseline = DummyClassifier('stratified').fit(X, y)
     majority_baseline = DummyClassifier('most_frequent').fit(X, y)
+
+    #Print model params
+    print('LR Params (coef, then intercept):')
+    print(lr_model.coef_)
+    print(lr_model.intercept_)
+    print()
+
+    print('SVM Params (coef, then intercept):')
+    print(svm_model.coef_)
+    print(svm_model.intercept_)
+    print()
     
     #Get the confusion matricies for the models and baselines
     print('LR:')
@@ -84,10 +99,10 @@ def adhd_analysis(data):
     print(auc(fpr, tpr))
     print()
 
-    # fpr, tpr = visualize_roc_curve(X, y, svm_model, 'ROC Curve for Linear SVM Model', 'roc_svm.png')
-    # print('SVM AUC')
-    # print(auc(fpr, tpr))
-    # print()
+    fpr, tpr = visualize_roc_curve(X, y, svm_model, 'ROC Curve for Linear SVM Model', 'roc_svm.png', for_SVC=True)
+    print('SVM AUC')
+    print(auc(fpr, tpr))
+    print()
 
     fpr, tpr = visualize_roc_curve(X, y, knn_model, 'ROC Curve for kNN Model', 'roc_knn.png')
     print('kNN AUC')
