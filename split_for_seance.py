@@ -4,7 +4,7 @@ import os
 def main():
     input_file = sys.argv[1]
     output_folder = sys.argv[2]
-    with open(input_file, 'r') as inp:
+    with open(input_file, 'r', encoding='utf-8') as inp:
         for line in inp:
             #Get data
             stripped = line.strip()
@@ -19,7 +19,7 @@ def main():
                     name = output_file + '.' + str(i) + '.txt'''
 
             #Put redudant user names go into the same file
-            with open(output_file, 'a') as out:
+            with open(output_file, 'a', encoding='utf-8') as out:
                 print(stripped, file=out)
 
 if __name__ == '__main__':
