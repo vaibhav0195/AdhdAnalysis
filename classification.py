@@ -15,6 +15,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.dummy import DummyClassifier
 import sys
 
+def get_categories():
+    return 'nwords,Admiration/Awe_GALC,Amusement_GALC,Anger_GALC,Anxiety_GALC,Beingtouched_GALC,Boredom_GALC,Compassion_GALC,Contempt_GALC,Contentment_GALC,Desperation_GALC,Disappointment_GALC,Disgust_GALC,Dissatisfaction_GALC,Envy_GALC,Fear_GALC,Feelinglove_GALC,Gratitude_GALC,Guilt_GALC,Happiness_GALC,Hatred_GALC,Hope_GALC,Humility_GALC,Interest/Enthusiasm_GALC,Irritation_GALC,Jealousy_GALC,Joy_GALC,Longing_GALC,Lust_GALC,Pleasure/Enjoyment_GALC,Pride_GALC,Relaxation/Serenity_GALC,Relief_GALC,Sadness_GALC,Shame_GALC,Surprise_GALC,Tension/Stress_GALC,Positive_GALC,Negative_GALC,Anger_EmoLex,Anticipation_EmoLex,Disgust_EmoLex,Fear_EmoLex,Joy_EmoLex,Negative_EmoLex,Positive_EmoLex,Sadness_EmoLex,Surprise_EmoLex,Trust_EmoLex,Valence,Valence_nwords,Arousal,Arousal_nwords,Dominance,Dominance_nwords,pleasantness,attention,sensitivity,aptitude,polarity,vader_negative,vader_neutral,vader_positive,vader_compound,hu_liu_pos_perc,hu_liu_neg_perc,hu_liu_pos_nwords,hu_liu_neg_nwords,hu_liu_prop,Positiv_GI,Negativ_GI,Pstv_GI,Affil_GI,Ngtv_GI,Hostile_GI,Strong_GI,Power_GI,Weak_GI,Submit_GI,Active_GI,Passive_GI,Pleasur_GI,Pain_GI,Feel_GI,Arousal_GI,Emot_GI,Virtue_GI,Vice_GI,Ovrst_GI,Undrst_GI,Academ_GI,Doctrin_GI,Econ_2_GI,Exch_GI,Econ_GI,Exprsv_GI,Legal_GI,Milit_GI,Polit_2_GI,Polit_GI,Relig_GI,Role_GI,Coll_GI,Work_GI,Ritual_GI,Socrel_GI,Race_GI,Kin_2_GI,Male_GI,Female_GI,Nonadlt_GI,Hu_GI,Ani_GI,Place_GI,Social_GI,Region_GI,Route_GI,Aquatic_GI,Land_GI,Sky_GI,Object_GI,Tool_GI,Food_GI,Vehicle_GI,Bldgpt_GI,Comnobj_GI,Natobj_GI,Bodypt_GI,Comform_GI,Com_GI,Say_GI,Need_GI,Goal_GI,Try_GI,Means_GI,Persist_GI,Complet_GI,Fail_GI,Natrpro_GI,Begin_GI,Vary_GI,Increas_GI,Decreas_GI,Finish_GI,Stay_GI,Rise_GI,Exert_GI,Fetch_GI,Travel_GI,Fall_GI,Think_GI,Know_GI,Causal_GI,Ought_GI,Perceiv_GI,Compare_GI,Eval_2_GI,Eval_GI,Solve_GI,Abs_2_GI,Abs_GI,Quality_GI,Quan_GI,Numb_GI,Ord_GI,Card_GI,Freq_GI,Dist_GI,Time_2_GI,Time_GI,Space_GI,Pos_GI,Dim_GI,Rel_GI,Color_GI,Self_GI,Our_GI,You_GI,Name_GI,Yes_GI,No_GI,Negate_GI,Intrj_GI,Iav_GI,Dav_GI,Sv_GI,Ipadj_GI,Indadj_GI,Powgain_Lasswell,Powloss_Lasswell,Powends_Lasswell,Powaren_Lasswell,Powcon_Lasswell,Powcoop_Lasswell,Powaupt_Lasswell,Powpt_Lasswell,Powdoct_Lasswell,Powauth_Lasswell,Powoth_Lasswell,Powtot_Lasswell,Rcethic_Lasswell,Rcrelig_Lasswell,Rcgain_Lasswell,Rcloss_Lasswell,Rcends_Lasswell,Rctot_Lasswell,Rspgain_Lasswell,Rsploss_Lasswell,Rspoth_Lasswell,Rsptot_Lasswell,Affgain_Lasswell,Affloss_Lasswell,Affpt_Lasswell,Affoth_Lasswell,Afftot_Lasswell,Wltpt_Lasswell,Wlttran_Lasswell,Wltoth_Lasswell,Wlttot_Lasswell,Wlbgain_Lasswell,Wlbloss_Lasswell,Wlbphys_Lasswell,Wlbpsyc_Lasswell,Wlbpt_Lasswell,Wlbtot_Lasswell,Enlgain_Lasswell,Enlloss_Lasswell,Enlends_Lasswell,Enlpt_Lasswell,Enloth_Lasswell,Enltot_Lasswell,Sklasth_Lasswell,Sklpt_Lasswell,Skloth_Lasswell,Skltot_Lasswell,Trngain_Lasswell,Trnloss_Lasswell,Tranlw_Lasswell,Meanslw_Lasswell,Endslw_Lasswell,Arenalw_Lasswell,Ptlw_Lasswell,Nation_Lasswell,Anomie_Lasswell,Negaff_Lasswell,Posaff_Lasswell,Surelw_Lasswell,If_Lasswell,Notlw_Lasswell,Timespc_Lasswell,formlw_Lasswell,negative_adjectives_component,social_order_component,action_component,positive_adjectives_component,joy_component,affect_friends_and_family_component,fear_and_digust_component,politeness_component,polarity_nouns_component,polarity_verbs_component,virtue_adverbs_component,positive_nouns_component,respect_component,trust_verbs_component,failure_component,well_being_component,economy_component,certainty_component,positive_verbs_component,objects_component'
+
 '''
 Calculated and displays an ROC curve for the given model. This is done by getting the y_scores array for the model (confidence in the predictions) and then iunputting that into scikit's roc_curve function. This data is plotted along with a line on y=x. The graph is then annotated and displayed.
 
@@ -62,35 +65,69 @@ def adhd_analysis(data):
     majority_baseline = DummyClassifier('most_frequent').fit(X, y)
 
     #Print model params
-    print('LR Params (coef, then intercept):')
-    print(lr_model.coef_)
-    print(lr_model.intercept_)
+    seance_params = get_categories()
+
+    print('LR Model Coefficients')
+    print(seance_params)
+    out_str = ''
+    coefficients = lr_model.coef_[0]
+    for i, coeff in enumerate(coefficients):
+        if i == 0:
+            out_str += str(coeff)
+        else:
+            out_str += ',' + str(coeff)
+    print(out_str)
     print()
 
-    print('SVM Params (coef, then intercept):')
-    print(svm_model.coef_)
-    print(svm_model.intercept_)
+    print('LR Model Intercept')
+    print(lr_model.intercept_[0])
+    print()
+
+    print('SVM Model Coefficients')
+    print(seance_params)
+    out_str = ''
+    coefficients = svm_model.coef_[0]
+    for i, coeff in enumerate(coefficients):
+        if i == 0:
+            out_str += str(coeff)
+        else:
+            out_str += ',' + str(coeff)
+    print(out_str)
+    print()
+    
+    print('LR Model Intercept')
+    print(svm_model.intercept_[0])
     print()
     
     #Get the confusion matricies for the models and baselines
     print('LR:')
-    print(confusion_matrix(y, lr_model.predict(X)))
+    print('True Negative,False Positive,False Negative,True Positive')
+    tn, fp, fn, tp = confusion_matrix(y, lr_model.predict(X)).ravel()
+    print(tn, fp, fn, tp, sep=',')
     print()
 
     print('SVM:')
-    print(confusion_matrix(y, svm_model.predict(X)))
+    print('True Negative,False Positive,False Negative,True Positive')
+    tn, fp, fn, tp = confusion_matrix(y, svm_model.predict(X)).ravel()
+    print(tn, fp, fn, tp, sep=',')
     print()
 
     print('kNN:')
-    print(confusion_matrix(y, knn_model.predict(X)))
+    print('True Negative,False Positive,False Negative,True Positive')
+    tn, fp, fn, tp = confusion_matrix(y, knn_model.predict(X)).ravel()
+    print(tn, fp, fn, tp, sep=',')
     print()
 
     print('Random:')
-    print(confusion_matrix(y, random_baseline.predict(X)))
+    print('True Negative,False Positive,False Negative,True Positive')
+    tn, fp, fn, tp = confusion_matrix(y, random_baseline.predict(X)).ravel()
+    print(tn, fp, fn, tp, sep=',')
     print()
 
     print('Majority:')
-    print(confusion_matrix(y, majority_baseline.predict(X)))
+    print('True Negative,False Positive,False Negative,True Positive')
+    tn, fp, fn, tp = confusion_matrix(y, majority_baseline.predict(X)).ravel()
+    print(tn, fp, fn, tp, sep=',')
     print()
 
     #ROC curve, AUC
