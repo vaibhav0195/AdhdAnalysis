@@ -15,6 +15,6 @@ with open('params_sorted.csv', 'w') as out:
     print(file=out)
 
     print('SVM params', file=out)
-    for param, cat in lr_sorted:
+    for param, cat in svm_sorted:
         print(str(cat) + ',' + str(param), file=out)
     print(file=out)
