@@ -275,13 +275,40 @@ def load_data(adhd_file, adhdPart_file):
     #Total DF
     data = adhd.append(adhdPart)
 
-    #Only keep components
+    '''#Only keep components
     for header in data.columns.values:
         if not '_component' in header and header != 'indicator':
+            del data[header]'''
+
+    keep = ['indicator',
+        'Admiration/Awe_GALC',
+        'Powcoop_Lasswell',
+        'Affoth_Lasswell',
+        'Academ_GI',
+        'Our_GI',
+        'Male_GI',
+        'Coll_GI',
+        'Guilt_GALC',
+        'Powaupt_Lasswell',
+        'Kin_2_GI',
+        'Female_GI',
+        'Affloss_Lasswell',
+        'Affpt_Lasswell',
+        'Fear_EmoLex',
+        'Anger_EmoLex',
+        'Name_GI',
+        'Natobj_GI',
+        'Bodypt_GI',
+        'Rcethic_Lasswell',
+        'Exprsv_GI',]
+    keep = keep[:18 + 1]
+    print(len(keep))
+    for header in data.columns.values:
+        if not header in keep:
             del data[header]
 
     return data.to_numpy()
-
+''
 '''
 This functions starts the program. It runs the full analysis for the data set
 '''
