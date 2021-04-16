@@ -1,0 +1,5 @@
+10-fold cross-val
+
+LR: C = 25
+SVC: C = 5
+kNN: k = 27
